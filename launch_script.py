@@ -8,11 +8,11 @@ print(os.system("chmod +x boinc_7.4.22_x86_64-pc-linux-gnu.sh"))
 
 time.sleep(0.5)  # wait for boinc to start
 
-print(os.system("./boinc_7.4.22_x86_64-pc-linux-gnu.sh"))
+print(os.system("bash boinc_7.4.22_x86_64-pc-linux-gnu.sh"))
 
 time.sleep(0.5)  # wait for boinc to start
 
-print(os.system("cd BOINC/; chmod +x boinc; chmod +x boinccmd"))
+print(os.system("chmod +x BOINC/boinc; chmod +x BOINC/boinccmd"))
 
 time.sleep(0.5)  # wait for boinc to start
 
@@ -20,19 +20,19 @@ print(os.system("wget https://rockstarresearch.com/boinc/global_prefs_override.x
 
 time.sleep(0.5)  # wait for boinc to start
 
-print(os.system("mkdir -p projects/www.primegrid.com; cd projects/www.primegrid.com; wget https://rockstarresearch.com/boinc/app_config.xml"))
+print(os.system("mkdir -p BOINC/projects/www.primegrid.com; cd projects/www.primegrid.com; wget https://rockstarresearch.com/boinc/app_config.xml"))
 
 time.sleep(0.5)  # wait for boinc to start
 
-print(os.system("cd ~/BOINC; ./boinc --daemon"))
+print(os.system("BOINC/boinc --daemon"))
 
 time.sleep(0.5)  # wait for boinc to start
 
-print(os.system("./boinccmd --project_attach http://www.primegrid.com/ 1046422_ff435ca1d4f1cbebbeba4ca39ecfeae4"))
+print(os.system("BOINC/boinccmd --project_attach http://www.primegrid.com/ 1046422_ff435ca1d4f1cbebbeba4ca39ecfeae4"))
 
 time.sleep(0.5)  # wait for boinc to start
 
-print(os.system("./boinccmd --get_tasks"))
+print(os.system("BOINC/boinccmd --get_tasks"))
 
 time.sleep(0.5)  # wait for boinc to start
 
