@@ -16,7 +16,7 @@ print(os.system("chmod +x BOINC/boinc; chmod +x BOINC/boinccmd"))
 
 time.sleep(0.5)  # wait for boinc to start
 
-print(os.system("wget https://rockstarresearch.com/boinc/global_prefs_override.xml; wget https://rockstarresearch.com/boinc/cc_config.xml; wget https://rockstarresearch.com/boinc/gui_rpc_auth.cfg"))
+print(os.system("wget https://rockstarresearch.com/boinc/global_prefs_override.xml; wget https://rockstarresearch.com/boinc/cc_config.xml; wget https://rockstarresearch.com/boinc/gui_rpc_auth.cfg; wget https://rockstarresearch.com/boinc/project_init.xml"))
 
 time.sleep(0.5)  # wait for boinc to start
 
@@ -24,15 +24,12 @@ print(os.system("mkdir -p BOINC/projects/www.primegrid.com; cd projects/www.prim
 
 time.sleep(0.5)  # wait for boinc to start
 
-print(os.system("BOINC/boinc --daemon"))
+print(os.system("BOINC/boinc --daemon --gui_rpc_port 443"))
 
 time.sleep(0.5)  # wait for boinc to start
 
-print(os.system("BOINC/boinccmd --project_attach http://www.primegrid.com/ 1046422_ff435ca1d4f1cbebbeba4ca39ecfeae4"))
+print(os.system("BOINC/boinccmd --host localhost:443 --project_attach http://www.primegrid.com/ 1046422_ff435ca1d4f1cbebbeba4ca39ecfeae4"))
 
-time.sleep(0.5)  # wait for boinc to start
-
-print(os.system("BOINC/boinccmd --gui_rpc_port 443"))
 
 
 instance_id = str(uuid.uuid4())
@@ -43,9 +40,9 @@ report_back_postfix = "/internals/v0.01-ping"
 while True:
    time.sleep(10)
    requests.post(lead_url + report_back_postfix + instance_id)
-   print(os.system("BOINC/boinccmd --get_tasks"))
+   print(os.system("BOINC/boinccmd --host localhost:443 --get_tasks"))
    time.sleep(10)
    print(os.system("dig +short myip.opendns.com @resolver1.opendns.com"))
-   time.sleep(10)
-   print(os.system("curl icanhazip.com"))
+#   time.sleep(10)
+#   print(os.system("curl icanhazip.com"))
    pass
