@@ -24,11 +24,11 @@ print(os.system("mkdir -p BOINC/projects/www.primegrid.com; cd projects/www.prim
 
 time.sleep(0.5)  # wait for boinc to start
 
-print(os.system("BOINC/boinc --daemon --gui_rpc_port 443"))
+print(os.system("BOINC/boinc --daemon --gui_rpc_port $PORT"))
 
 time.sleep(0.5)  # wait for boinc to start
 
-print(os.system("BOINC/boinccmd --host localhost:443 --project_attach http://www.primegrid.com/ 1046422_ff435ca1d4f1cbebbeba4ca39ecfeae4"))
+print(os.system("BOINC/boinccmd --host 127.0.0.1:$PORT --project_attach http://www.primegrid.com/ 1046422_ff435ca1d4f1cbebbeba4ca39ecfeae4"))
 
 
 
@@ -38,10 +38,10 @@ report_back_postfix = "/internals/v0.01-ping"
 
 
 while True:
-   time.sleep(10)
+   time.sleep(20)
    requests.post(lead_url + report_back_postfix + instance_id)
-   print(os.system("BOINC/boinccmd --host localhost:443 --get_tasks"))
-   time.sleep(10)
+   print(os.system("BOINC/boinccmd --host localhost:$PORT --get_tasks"))
+   time.sleep(20)
    print(os.system("dig +short myip.opendns.com @resolver1.opendns.com"))
 #   time.sleep(10)
 #   print(os.system("curl icanhazip.com"))
