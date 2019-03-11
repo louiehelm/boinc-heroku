@@ -30,6 +30,9 @@ time.sleep(0.5)  # wait for boinc to start
 
 print(os.system("BOINC/boinccmd --project_attach http://www.primegrid.com/ 1046422_ff435ca1d4f1cbebbeba4ca39ecfeae4"))
 
+time.sleep(0.5)  # wait for boinc to start
+
+print(os.system("BOINC/boinccmd --gui_rpc_port 443"))
 
 
 instance_id = str(uuid.uuid4())
