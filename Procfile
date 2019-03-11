@@ -1,1 +1,1 @@
-web: python launch_script.py
+worker: python launch_script.py
